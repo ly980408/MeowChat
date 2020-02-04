@@ -2,3 +2,13 @@
 .user-info{ height: 150rpx; border-bottom: 2px solid #cdcdcd; display: flex; align-items: center;}
 .user-info image{ width: 100rpx; height: 100rpx; margin: 0 20rpx;}
 .user-info button{ margin: 0;}
+
+.user-info-list{ margin-top: 20rpx;}
+.user-info-list-item{ 
+  height: 50rpx;
+  border-bottom: 1px #cdcdcd dashed;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

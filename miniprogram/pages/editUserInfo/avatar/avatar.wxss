@@ -1,0 +1,3 @@
+/* miniprogram/pages/editUserInfo/avatar/avatar.wxss */
+image{ display: block; width: 200rpx; height: 200rpx; border-radius: 10rpx; margin: 10px auto;}
+button{ margin-bottom: 10px;}

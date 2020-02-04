@@ -1,7 +1,7 @@
 <!--miniprogram/pages/index/index.wxml-->
 <view class='index'>
   <swiper class="index-swiper" indicator-dots="{{true}}" autoplay="{{false}}" circular="{{true}}">
-    <block wx:for="{{imgUrls}}" wx:key="{{index}}">
+    <block wx:for="{{imgUrls}}" wx:key="index">
       <swiper-item>
         <image src="{{item}}" />
       </swiper-item>
@@ -16,47 +16,7 @@
 
 <view class="index-list">
   <view class="index-list-item">
-    <image mode="aspectFill" src="../../images/swiper/1.jpg"></image>
-    <view class="index-list-text">
-      <text>IU</text>
-      <text>
-        <text class="iconfont iconxihuan"></text>
-        <text>100</text>
-      </text>
-    </view>
-  </view>
-  <view class="index-list-item">
-    <image mode="aspectFill" src="../../images/swiper/2.jpg"></image>
-    <view class="index-list-text">
-      <text>IU</text>
-      <text>
-        <text class="iconfont iconxihuan"></text>
-        <text>100</text>
-      </text>
-    </view>
-  </view>
-  <view class="index-list-item">
-    <image mode="aspectFill" src="../../images/swiper/3.jpg"></image>
-    <view class="index-list-text">
-      <text class="name">IU</text>
-      <text class="like">
-        <text class="iconfont iconxihuan"></text>
-        <text class="like-number">100</text>
-      </text>
-    </view>
-  </view>
-  <view class="index-list-item">
-    <image mode="aspectFill" src="../../images/swiper/4.jpg"></image>
-    <view class="index-list-text">
-      <text>IU</text>
-      <text>
-        <text class="iconfont iconxihuan"></text>
-        <text>100</text>
-      </text>
-    </view>
-  </view>
-  <view class="index-list-item">
-    <image mode="aspectFill" src="../../images/swiper/5.jpg"></image>
+    <image mode="aspectFill" src="https://bkimg.cdn.bcebos.com/pic/c2fdfc039245d688d48438a2abc27d1ed21b2435?x-bce-process=image/watermark,g_7,image_d2F0ZXIvYmFpa2UxODA=,xp_5,yp_5"></image>
     <view class="index-list-text">
       <text>IU</text>
       <text>

@@ -1,0 +1,4 @@
+/* miniprogram/pages/editUserInfo/location/location.wxss */
+.location{
+  margin: 20px;
+}

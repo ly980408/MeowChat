@@ -54,7 +54,10 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.setData({
+      userAvatar: app.userInfo.userAvatar,
+      nickName: app.userInfo.nickName
+    })
   },
 
   /**
@@ -108,7 +111,8 @@ Page({
           phoneNumber: '',
           wxId:'',
           likes: 0,
-          time: new Date()
+          time: new Date(),
+          isLocation: true
         }
       }).then((res) => {
         // 读取信息并更新到全局属性中

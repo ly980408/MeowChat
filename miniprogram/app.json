@@ -3,7 +3,16 @@
     "pages/index/index",
     "pages/near/near",
     "pages/message/message",
-    "pages/user/user"
+    "pages/user/user",
+    "pages/editUserInfo/editUserInfo",
+    "pages/friendList/friendList",
+    "pages/home/home",
+    "pages/editUserInfo/avatar/avatar",
+    "pages/editUserInfo/name/name",
+    "pages/editUserInfo/signature/signature",
+    "pages/editUserInfo/location/location",
+    "pages/editUserInfo/phone/phone",
+    "pages/editUserInfo/weixin/weixin"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -41,5 +50,6 @@
         "text": "我的"
       }
     ]
-  }
+  },
+  "sitemapLocation": "sitemap.json"
 }

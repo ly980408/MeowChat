@@ -1,0 +1,9 @@
+/* miniprogram/pages/editUserInfo/phone/phone.wxss */
+.phone{
+  margin: 0 20px;
+}
+input{
+  width: 100%;
+  border: 1px solid #cdcdcd;
+  margin: 20px auto;
+}

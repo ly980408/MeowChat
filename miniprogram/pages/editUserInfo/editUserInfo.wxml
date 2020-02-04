@@ -1,0 +1,39 @@
+<!--miniprogram/pages/editUserInfo/editUserInfo.wxml-->
+<view class="editUserInfo">
+  <navigator url="./avatar/avatar" open-type="navigate">
+      <view class='editUserInfo-item'>
+        <text>修改头像</text>
+        <text class='iconfont iconjiantou-copy'></text>
+      </view>
+    </navigator>
+    <navigator url="./name/name" open-type="navigate">
+      <view class='editUserInfo-item'>
+        <text>修改昵称</text>
+        <text class='iconfont iconjiantou-copy'></text>
+      </view>
+    </navigator>
+    <navigator url="./signature/signature" open-type="navigate">
+      <view class='editUserInfo-item'>
+        <text>编辑个性签名</text>
+        <text class='iconfont iconjiantou-copy'></text>
+      </view>
+    </navigator>
+    <navigator url="./location/location" open-type="navigate">
+      <view class='editUserInfo-item'>
+        <text>位置共享</text>
+        <text class='iconfont iconjiantou-copy'></text>
+      </view>
+    </navigator>
+    <navigator url="./phone/phone" open-type="navigate">
+      <view class='editUserInfo-item'>
+        <text>设置手机号<text class="editUserInfo-item-tips"> (仅好友可见)</text></text>
+        <text class='iconfont iconjiantou-copy'></text>
+      </view>
+    </navigator>
+    <navigator url="./weixin/weixin" open-type="navigate">
+      <view class='editUserInfo-item'>
+        <text>设置微信号<text class="editUserInfo-item-tips"> (仅好友可见)</text></text>
+        <text class='iconfont iconjiantou-copy'></text>
+      </view>
+    </navigator>
+</view>

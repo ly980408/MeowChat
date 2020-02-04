@@ -1,0 +1,5 @@
+<!--miniprogram/pages/editUserInfo/signature/signature.wxml-->
+<view class="signature">
+  <textarea value="{{ signature }}" placeholder="编辑你的个性签名~" bindinput="getValue"></textarea>
+  <button bindtap="updateSignature">保存修改</button>
+</view>

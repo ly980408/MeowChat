@@ -5,4 +5,24 @@
     <text wx:if="{{isLogged}}"> {{ nickName }} </text>
     <button wx:else disabled='{{ disabled }}' open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">授权登录</button>
   </view>
+  <view wx:if="{{ isLogged }}" class="user-info-list">
+    <navigator url="../editUserInfo/editUserInfo" open-type="navigate">
+      <view class='user-info-list-item'>
+        <text>编辑个人信息</text>
+        <text class='iconfont iconjiantou-copy'></text>
+      </view>
+    </navigator>
+    <navigator url="../friendList/friendList" open-type="navigate">
+      <view class='user-info-list-item'>
+        <text>查看好友列表</text>
+        <text class='iconfont iconjiantou-copy'></text>
+      </view>
+    </navigator>
+    <navigator url="../home/home" open-type="navigate">
+      <view class='user-info-list-item'>
+        <text>个人主页</text>
+        <text class='iconfont iconjiantou-copy'></text>
+      </view>
+    </navigator>
+  </view>
 </view>

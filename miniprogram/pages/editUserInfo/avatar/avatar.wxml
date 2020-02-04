@@ -1,0 +1,6 @@
+<!--miniprogram/pages/editUserInfo/avatar/avatar.wxml-->
+<view class="avatar">
+  <image src="{{ userAvatar }}" bindtap="chooseImage"></image>
+  <button open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">使用微信头像</button>
+  <button bindtap="updateAvatar">保存修改</button>
+</view>

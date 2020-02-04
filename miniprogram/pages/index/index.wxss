@@ -1,6 +1,6 @@
 /* miniprogram/pages/index/index.wxss */
 .index-swiper{
-  height: 180px;
+  height: 400rpx;
   margin: 20rpx;
   border-radius: 10rpx;
   overflow: hidden;

@@ -1,0 +1,5 @@
+<!--miniprogram/pages/editUserInfo/weixin/weixin.wxml-->
+<view class="weixin">
+  <input type="text" value="{{ wxId }}" bindinput="getValue" placeholder="输入你的微信号"></input>
+  <button bindtap="updateWxId">保存修改</button>
+</view>

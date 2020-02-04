@@ -1,15 +1,15 @@
-// miniprogram/pages/index/index.js
+// miniprogram/pages/editUserInfo/location/location.js
+
+const app = getApp()
+const db = wx.cloud.database()
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    imgUrls: [
-      'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1580827190001&di=25ab7a695b671855634e31ac2e4cea36&imgtype=0&src=http%3A%2F%2Fimg.kj-cy.cn%2Fuploads%2Flitimg%2F20160204%2F1454551556260729.jpg',
-      'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=346437509,61221999&fm=26&gp=0.jpg',
-      'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3714693612,2461480459&fm=26&gp=0.jpg'
-      ]
+    isLocation: true
   },
 
   /**
@@ -23,7 +23,9 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    this.setData({
+      isLocation: app.userInfo.isLocation
+    })
   },
 
   /**
@@ -66,5 +68,15 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  switchChange(ev){
+    let value = ev.detail.value
+    db.collection('users').doc(app.userInfo._id).update({
+      data: {
+        isLocation: value
+      }
+    }).then( (res) => {
+      app.userInfo.isLocation = value
+      })
   }
 })
