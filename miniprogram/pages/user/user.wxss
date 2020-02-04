@@ -1,0 +1,4 @@
+/* miniprogram/pages/user/user.wxss */
+.user-info{ height: 150rpx; border-bottom: 2px solid #cdcdcd; display: flex; align-items: center;}
+.user-info image{ width: 100rpx; height: 100rpx; margin: 0 20rpx;}
+.user-info button{ margin: 0;}

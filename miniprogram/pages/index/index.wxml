@@ -1,0 +1,68 @@
+<!--miniprogram/pages/index/index.wxml-->
+<view class='index'>
+  <swiper class="index-swiper" indicator-dots="{{true}}" autoplay="{{false}}" circular="{{true}}">
+    <block wx:for="{{imgUrls}}" wx:key="{{index}}">
+      <swiper-item>
+        <image src="{{item}}" />
+      </swiper-item>
+    </block>
+  </swiper>
+</view>
+
+<view class='index-tab'>
+  <view class="active">推荐</view>
+  <view>最新</view>
+</view>
+
+<view class="index-list">
+  <view class="index-list-item">
+    <image mode="aspectFill" src="../../images/swiper/1.jpg"></image>
+    <view class="index-list-text">
+      <text>IU</text>
+      <text>
+        <text class="iconfont iconxihuan"></text>
+        <text>100</text>
+      </text>
+    </view>
+  </view>
+  <view class="index-list-item">
+    <image mode="aspectFill" src="../../images/swiper/2.jpg"></image>
+    <view class="index-list-text">
+      <text>IU</text>
+      <text>
+        <text class="iconfont iconxihuan"></text>
+        <text>100</text>
+      </text>
+    </view>
+  </view>
+  <view class="index-list-item">
+    <image mode="aspectFill" src="../../images/swiper/3.jpg"></image>
+    <view class="index-list-text">
+      <text class="name">IU</text>
+      <text class="like">
+        <text class="iconfont iconxihuan"></text>
+        <text class="like-number">100</text>
+      </text>
+    </view>
+  </view>
+  <view class="index-list-item">
+    <image mode="aspectFill" src="../../images/swiper/4.jpg"></image>
+    <view class="index-list-text">
+      <text>IU</text>
+      <text>
+        <text class="iconfont iconxihuan"></text>
+        <text>100</text>
+      </text>
+    </view>
+  </view>
+  <view class="index-list-item">
+    <image mode="aspectFill" src="../../images/swiper/5.jpg"></image>
+    <view class="index-list-text">
+      <text>IU</text>
+      <text>
+        <text class="iconfont iconxihuan"></text>
+        <text>100</text>
+      </text>
+    </view>
+  </view>
+</view>

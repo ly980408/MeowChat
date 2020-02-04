@@ -1,0 +1,8 @@
+<!--miniprogram/pages/user/user.wxml-->
+<view class="user">
+  <view class="user-info">
+    <image src="{{ userAvatar }}"></image>
+    <text wx:if="{{isLogged}}"> {{ nickName }} </text>
+    <button wx:else disabled='{{ disabled }}' open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">授权登录</button>
+  </view>
+</view>
