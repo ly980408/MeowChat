@@ -15,8 +15,8 @@
     "pages/editUserInfo/weixin/weixin"
   ],
   "window": {
-    "backgroundColor": "#F6F6F6",
-    "backgroundTextStyle": "light",
+    "backgroundColor": "#cdcdcd",
+    "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#ffde55",
     "navigationBarTitleText": "Meow Chat",
     "navigationBarTextStyle": "white"

@@ -1,9 +1,13 @@
 /* miniprogram/pages/user/user.wxss */
-.user-info{ height: 150rpx; border-bottom: 2px solid #cdcdcd; display: flex; align-items: center;}
+.user-info{ height: 150rpx; border-bottom: 10px solid #cdcdcd; display: flex; align-items: center;}
 .user-info image{ width: 100rpx; height: 100rpx; margin: 0 20rpx;}
 .user-info button{ margin: 0;}
+.user-info-text { height: 100rpx; width: 60%;}
+.user-info-text text { display: block; height: 50%; width: 100%; box-sizing: border-box; overflow-x: hidden; text-overflow: ellipsis; white-space: nowrap;}
+/* .user-info-text .nickname {} */
+.user-info-text .signature { padding-left: 10rpx; font-size: 14px; color: gray;}
 
-.user-info-list{ margin-top: 20rpx;}
+/* .user-info-list{} */
 .user-info-list-item{ 
   height: 50rpx;
   border-bottom: 1px #cdcdcd dashed;

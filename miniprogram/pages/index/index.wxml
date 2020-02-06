@@ -1,28 +1,33 @@
 <!--miniprogram/pages/index/index.wxml-->
 <view class='index'>
-  <swiper class="index-swiper" indicator-dots="{{true}}" autoplay="{{false}}" circular="{{true}}">
+  <swiper class="index-swiper"
+          indicator-dots="{{true}}"
+          indicator-color="rgba(255,255,255,.3)"
+          indicator-active-color="#ffde55"
+          autoplay="{{false}}"
+          circular="{{true}}">
     <block wx:for="{{imgUrls}}" wx:key="index">
       <swiper-item>
         <image src="{{item}}" />
       </swiper-item>
     </block>
   </swiper>
-</view>
 
-<view class='index-tab'>
-  <view class="active">推荐</view>
-  <view>最新</view>
-</view>
+  <view class='index-tab'>
+    <view class="active">推荐</view>
+    <view>最新</view>
+  </view>
 
-<view class="index-list">
-  <view class="index-list-item">
-    <image mode="aspectFill" src="https://bkimg.cdn.bcebos.com/pic/c2fdfc039245d688d48438a2abc27d1ed21b2435?x-bce-process=image/watermark,g_7,image_d2F0ZXIvYmFpa2UxODA=,xp_5,yp_5"></image>
-    <view class="index-list-text">
-      <text>IU</text>
-      <text>
-        <text class="iconfont iconxihuan"></text>
-        <text>100</text>
-      </text>
+  <view class="index-list">
+    <view class="index-list-item" wx:for="{{ dataList }}" wx:key="index">
+      <image mode="aspectFill" src="{{ item.userAvatar }}"></image>
+      <view class="index-list-text">
+        <text class="name">{{ item.nickName }}</text>
+        <text data-id="{{ item._id }}" bindtap="handleLikes">
+          <text class="iconfont iconxihuan"></text>
+          <text class="likes">{{ item.likes }}</text>
+        </text>
+      </view>
     </view>
   </view>
 </view>

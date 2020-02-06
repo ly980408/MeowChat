@@ -2,7 +2,10 @@
 <view class="user">
   <view class="user-info">
     <image src="{{ userAvatar }}"></image>
-    <text wx:if="{{isLogged}}"> {{ nickName }} </text>
+    <view wx:if="{{isLogged}}" class="user-info-text">
+      <text class="nickname"> {{ nickName }} </text>
+      <text class="signature"> {{ signature }} </text>
+    </view>
     <button wx:else disabled='{{ disabled }}' open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">授权登录</button>
   </view>
   <view wx:if="{{ isLogged }}" class="user-info-list">

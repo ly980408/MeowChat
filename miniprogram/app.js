@@ -11,7 +11,24 @@ App({
       })
     }
 
-    this.globalData = {}
+    wx.cloud.callFunction({
+      name: 'login',
+      data: {}
+    }).then(res => {
+      // 实现自动登录功能
+      let db = wx.cloud.database()
+      db.collection('users').where({
+        _openid: res.result.openid
+      }).get().then((res) => {
+        if (res.data.length) {
+          this.userInfo = Object.assign(this.userInfo, res.data[0]);
+          this.isLogged = true
+        } else {
+          this.isLogged = false
+        }
+      })
+    })
+    
     this.userInfo = {}
   }
 })

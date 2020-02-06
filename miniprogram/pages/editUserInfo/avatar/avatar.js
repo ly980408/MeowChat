@@ -9,7 +9,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    userAvatar: ''
+    userAvatar: '',
+    isUpdate: false
   },
 
   /**
@@ -77,13 +78,20 @@ Page({
       success: (res) => {
         const tempFilePath = res.tempFilePaths[0]
         this.setData({
-          userAvatar: tempFilePath
+          userAvatar: tempFilePath,
+          isUpdate: true
         })
       }
     })
   },
   updateAvatar () {
-
+    if (!this.data.isUpdate) {
+      wx.showToast({
+        title: '请先点击头像进行更改！',
+        icon: 'none'
+      })
+      return
+    }
     wx.showLoading({
       title: '上传中...'
     })

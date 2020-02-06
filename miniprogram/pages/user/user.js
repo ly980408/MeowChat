@@ -11,6 +11,7 @@ Page({
   data: {
     userAvatar: "/images/user/user-unlogin.png",
     nickName: '',
+    signature: '',
     isLogged: false,
     disabled: true
   },
@@ -26,28 +27,19 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    wx.cloud.callFunction({
-      name: 'login',
-      data: {}
-    }).then(res => {
-      // 实现自动登录功能
-      db.collection('users').where({
-        _openid: res.result.openid
-      }).get().then((res) => {
-        if (res.data.length) {
-          app.userInfo = Object.assign(app.userInfo, res.data[0]);
-          this.setData({
-            userAvatar: app.userInfo.userAvatar,
-            nickName: app.userInfo.nickName,
-            isLogged: true
-          })
-        } else {
-          this.setData({
-            disabled: false
-          })
-        }
+    if (app.isLogged) {
+      this.setData({
+        userAvatar: app.userInfo.userAvatar,
+        nickName: app.userInfo.nickName,
+        signature: app.userInfo.signature,
+        isLogged: true
       })
-    });
+    } else {
+      this.setData({
+        isLogged: false,
+        disabled: false
+      })
+    }
   },
 
   /**
@@ -56,7 +48,8 @@ Page({
   onShow: function () {
     this.setData({
       userAvatar: app.userInfo.userAvatar,
-      nickName: app.userInfo.nickName
+      nickName: app.userInfo.nickName,
+      signature: app.userInfo.signature
     })
   },
 
@@ -111,6 +104,7 @@ Page({
           phoneNumber: '',
           wxId:'',
           likes: 0,
+          likeList: [],
           time: new Date(),
           isLocation: true
         }
@@ -123,9 +117,11 @@ Page({
             userAvatar: app.userInfo.userAvatar,
             nickName: app.userInfo.nickName,
             isLogged: true
-          });
-        });
-      });
+          })
+          app.isLogged = true
+          app.toUpdate = true
+        })
+      })
     }
   }
 })
