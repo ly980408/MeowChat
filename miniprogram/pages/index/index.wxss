@@ -11,23 +11,24 @@
 }
 .index-tab{
   display: flex;
+  margin: 20rpx;
 }
 .index-tab view{
   flex: 1;
   text-align: center;
-  padding: 10rpx;
-  margin: 20rpx;
+  padding: 20rpx 0;
+  margin: 20rpx auto;
 }
 .index-tab view.active{
   border-bottom: 2px solid #ffde55;
   color: #ffde55;
 }
 
-.index-list{ display: flex; flex-wrap: wrap;}
+.index-list{ display: flex; flex-wrap: wrap; margin: 0 24rpx; margin-bottom: 20px;}
 .index-list .index-list-item{ width: 50%; margin-bottom: 10rpx;}
 .index-list .index-list-item image{ display: block; width: 90%; height: 300rpx; margin: 0 auto;}
 
-.index-list-text{ display: flex; width: 90%; height: 20px; line-height: 20px; justify-content: space-between; margin: 0 auto; color: #ffde55; font-size: 16px;}
-.index-list-text .iconfont{
-  color: #cdcdcd;
-}
+.index-list-text{ display: flex; width: 90%; height: 24px; justify-content: space-between; margin: 0 auto; color: #ffde55; font-size: 16px;}
+.index-list-text .iconfont{ font-size: 16px; color: tomato;}
+.index-list-text .likes-number { font-size: 12px; color: lightslategray;}
+.index-list-text .name{ color: hotpink; max-width: 60%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}

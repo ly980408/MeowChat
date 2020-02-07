@@ -14,18 +14,26 @@
   </swiper>
 
   <view class='index-tab'>
-    <view class="active">推荐</view>
-    <view>最新</view>
+    <view class="{{ current == 'likes' ? 'active' : '' }}" data-sort="likes" bindtap="handleClick">推荐</view>
+    <view class="{{ current == 'time' ? 'active' : '' }}" data-sort="time" bindtap="handleClick">最新</view>
   </view>
-
+  <wxs module="m1">
+    var numberFormat = function(number){
+      if(number >= 1000){
+        number = (number/1000).toFixed(1) + 'k';
+      }
+      return number;
+    }
+    module.exports.numberFormat = numberFormat;
+  </wxs>
   <view class="index-list">
     <view class="index-list-item" wx:for="{{ dataList }}" wx:key="index">
       <image mode="aspectFill" src="{{ item.userAvatar }}"></image>
       <view class="index-list-text">
         <text class="name">{{ item.nickName }}</text>
-        <text data-id="{{ item._id }}" bindtap="handleLikes">
-          <text class="iconfont iconxihuan"></text>
-          <text class="likes">{{ item.likes }}</text>
+        <text data-id="{{ item._id }}" class="likes" bindtap="handleLikes">
+          <text class="iconfont iconxihuan1"></text>
+          <text class="likes-number"> {{ m1.numberFormat(item.likes) }}</text>
         </text>
       </view>
     </view>

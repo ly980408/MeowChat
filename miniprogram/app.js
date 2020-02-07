@@ -10,7 +10,7 @@ App({
         traceUser: true,
       })
     }
-
+    this.userInfo = {}
     wx.cloud.callFunction({
       name: 'login',
       data: {}
@@ -28,7 +28,5 @@ App({
         }
       })
     })
-    
-    this.userInfo = {}
   }
 })

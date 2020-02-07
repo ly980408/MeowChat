@@ -104,7 +104,6 @@ Page({
           phoneNumber: '',
           wxId:'',
           likes: 0,
-          likeList: [],
           time: new Date(),
           isLocation: true
         }
@@ -119,7 +118,7 @@ Page({
             isLogged: true
           })
           app.isLogged = true
-          app.toUpdate = true
+          app.toRefresh = true
         })
       })
     }

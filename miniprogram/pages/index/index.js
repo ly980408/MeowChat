@@ -14,7 +14,8 @@ Page({
       'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=346437509,61221999&fm=26&gp=0.jpg',
       'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3714693612,2461480459&fm=26&gp=0.jpg'
       ],
-      dataList: []
+      dataList: [],
+      current: 'likes'
   },
 
   /**
@@ -28,16 +29,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    db.collection('users').field({
-      userAvatar: true,
-      nickName: true,
-      gender: true,
-      likes: true
-    }).get().then((res) => {
-      this.setData({
-        dataList: res.data
-      })
-    })
+    this.refreshData()
   },
 
   /**
@@ -45,7 +37,7 @@ Page({
    */
   onShow: function () {
     if (app.isLogged && app.toUpdate) {
-      wx.startPullDownRefresh()
+      this.refreshData()
       app.toUpdate = false
     }
   },
@@ -68,20 +60,14 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    db.collection('users').field({
-      userAvatar: true,
-      nickName: true,
-      gender: true,
-      likes: true
-    }).get().then((res) => {
-      this.setData({
-        dataList: res.data
-      })
-      wx.showToast({
+    wx.showLoading({
+      title: '正在刷新...',
+    })
+    this.refreshData()
+    wx.showToast({
         title: '刷新成功',
       })
       wx.stopPullDownRefresh()
-    })
   },
 
   /**
@@ -98,59 +84,62 @@ Page({
 
   },
   handleLikes (ev) {
-    let id = ev.target.dataset.id
-    let likeList = app.userInfo.likeList
-    let target
-    let index
-    if (likeList.length) {
-      target = likeList.some((el, i) => {
-          if(el === id){
-            index = i
-            return true
-          }
-      })
-    } else {
-      target = false
-    }
-    console.log(target, index)
-    // target 是否喜欢标识，true 代表已喜欢
-    // index 如果已喜欢，index 表示该用户id的索引位置
+    // 此方法暂未实现第二次点击取消功能，而是可以无限喜欢
+    // 待更新。。。
 
-    // 点击喜欢按钮后 处理
-    
+    let id = ev.target.dataset.id
+
     // 调用云函数 update 
-    // wx.cloud.callFunction({
-    //   name: 'update',
-    //   data: {
-    //     collection: 'users',
-    //     doc: id,
-    //     data: `{
-    //       likes: _.inc(${target?-1:1})
-    //     }`
-    //   }
-    // }).then(res => {
-    //   let updated = res.result.stats.updated
-    //   // 喜欢
-    //   if (updated && !target) {
-    //     db.collection('users').doc(app.userInfo._id).update({
-    //       data: {
-    //         likeList: db.command.push(id)
-    //       }
-    //     }).then(res => {
-    //       console.log('+1')
-    //     })
-    //   }
-    //   // 取消喜欢
-    //   else if (updated && target){
-    //     likeList.splice(index, 1)
-    //     db.collection('users').doc(app.userInfo._id).update({
-    //       data: {
-    //         likeList
-    //       }
-    //     }).then(res => {
-    //       console.log('-1')
-    //     })
-    //   }
-    // })
+    wx.cloud.callFunction({
+      name: 'update',
+      data: {
+        collection: 'users',
+        doc: id,
+        data: `{
+          likes: _.inc(1)
+        }`
+      }
+    }).then(res => {
+      let updated = res.result.stats.updated
+      if (updated) {
+        let newDataList = [...this.data.dataList]
+        for (let user of newDataList) {
+          if (user._id == id) {
+            user.likes++
+            break
+          }
+        }
+        this.setData({
+          dataList: newDataList
+        })
+      }
+      
+    })
+  },
+  refreshData(){
+    db.collection('users')
+    .field({
+      userAvatar: true,
+      nickName: true,
+      gender: true,
+      likes: true
+    })
+    .orderBy(this.data.current, 'desc')
+    .get()
+    .then((res) => {
+      this.setData({
+        dataList: res.data
+      })
+    })
+  },
+  handleClick(ev){
+    let current = ev.target.dataset.sort
+    if(current == this.data.current){
+      return false
+    }
+    this.setData({
+      current
+    })
+    this.refreshData()
   }
 })
