@@ -62,6 +62,14 @@
 					"id": -1,
 					"name": "pages/editUserInfo/signature/signature",
 					"pathName": "pages/editUserInfo/signature/signature",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 4,
+					"name": "pages/home/home",
+					"pathName": "pages/home/home",
+					"query": "userId=d68532785e3d52ec0bd44bfe1944999a",
 					"scene": null
 				}
 			]

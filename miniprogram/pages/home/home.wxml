@@ -1,2 +1,32 @@
 <!--miniprogram/pages/home/home.wxml-->
-<text>miniprogram/pages/home/home.wxml</text>
+
+<wxs src="../../wxs/numberFormat.wxs" module="m1"></wxs>
+
+<view class="home">
+  <view>
+    <view class="header">
+      <image src="{{ info.userAvatar }}" class="avatar"></image>
+      <view class="main">
+        <view class="name">
+          <text>{{ info.nickName }}</text>
+          <text wx:if="{{ info.gender != 0 }}" class="{{ isMan ? 'iconfont iconnan':'iconfont iconnv' }}"></text>
+        </view>
+        <view>
+          <text class="area">地区：{{ info.city }},{{ info.province }}</text>
+        </view>
+      </view>
+      <!-- 待添加 点击事件 喜欢 -->
+      <text class="likes" data-id="{{ info._id }}" bindtap="handleLikes">
+        <text class="iconfont iconxihuan1"></text>
+        <text class="likes-number">{{ m1.numberFormat(info.likes) }}</text>
+      </text>
+    </view>
+    <view class="other">
+      <text class="signature">个性签名：{{ info.signature }}</text>
+      <text class="phone">手机号：{{ info.phoneNumber }}</text>
+      <text class="wx">微信号：{{ info.wxId }}</text>
+     </view>
+  </view>
+
+  <button wx:if="{{ !isFriend }}" class="addfriend">添加好友</button>
+</view>

@@ -25,7 +25,7 @@
 }
 
 .index-list{ display: flex; flex-wrap: wrap; margin: 0 24rpx; margin-bottom: 20px;}
-.index-list .index-list-item{ width: 50%; margin-bottom: 10rpx;}
+.index-list .index-list-item{ width: 50%; margin-bottom: 20rpx;}
 .index-list .index-list-item image{ display: block; width: 90%; height: 300rpx; margin: 0 auto;}
 
 .index-list-text{ display: flex; width: 90%; height: 24px; justify-content: space-between; margin: 0 auto; color: #ffde55; font-size: 16px;}

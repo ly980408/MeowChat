@@ -12,6 +12,7 @@ Page({
     userAvatar: "/images/user/user-unlogin.png",
     nickName: '',
     signature: '',
+    homepage: '',
     isLogged: false,
     disabled: true
   },
@@ -32,6 +33,7 @@ Page({
         userAvatar: app.userInfo.userAvatar,
         nickName: app.userInfo.nickName,
         signature: app.userInfo.signature,
+        homepage: `../home/home?userId=${app.userInfo._id}`,
         isLogged: true
       })
     } else {

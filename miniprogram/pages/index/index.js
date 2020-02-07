@@ -83,39 +83,39 @@ Page({
   onShareAppMessage: function () {
 
   },
-  handleLikes (ev) {
-    // 此方法暂未实现第二次点击取消功能，而是可以无限喜欢
-    // 待更新。。。
+  // handleLikes (ev) {
+  //   // 此方法暂未实现第二次点击取消功能，而是可以无限喜欢
+  //   // 待更新。。。
 
-    let id = ev.target.dataset.id
+  //   let id = ev.target.dataset.id
 
-    // 调用云函数 update 
-    wx.cloud.callFunction({
-      name: 'update',
-      data: {
-        collection: 'users',
-        doc: id,
-        data: `{
-          likes: _.inc(1)
-        }`
-      }
-    }).then(res => {
-      let updated = res.result.stats.updated
-      if (updated) {
-        let newDataList = [...this.data.dataList]
-        for (let user of newDataList) {
-          if (user._id == id) {
-            user.likes++
-            break
-          }
-        }
-        this.setData({
-          dataList: newDataList
-        })
-      }
+  //   // 调用云函数 update 
+  //   wx.cloud.callFunction({
+  //     name: 'update',
+  //     data: {
+  //       collection: 'users',
+  //       doc: id,
+  //       data: `{
+  //         likes: _.inc(1)
+  //       }`
+  //     }
+  //   }).then(res => {
+  //     let updated = res.result.stats.updated
+  //     if (updated) {
+  //       let newDataList = [...this.data.dataList]
+  //       for (let user of newDataList) {
+  //         if (user._id == id) {
+  //           user.likes++
+  //           break
+  //         }
+  //       }
+  //       this.setData({
+  //         dataList: newDataList
+  //       })
+  //     }
       
-    })
-  },
+  //   })
+  //},
   refreshData(){
     db.collection('users')
     .field({
@@ -141,5 +141,11 @@ Page({
       current
     })
     this.refreshData()
+  },
+  toHome(ev){
+    let id = ev.target.dataset.id
+    wx.navigateTo({
+      url: `../home/home?userId=${id}`
+    })
   }
 })
