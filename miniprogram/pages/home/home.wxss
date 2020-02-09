@@ -1,16 +1,28 @@
 /* miniprogram/pages/home/home.wxss */
-.home{ margin: 25rpx;}
-.home view{ box-sizing: border-box;}
-.addfriend{ margin: 20rpx;}
-.header{ height: 200rpx; margin: 35rpx 10rpx;position: relative;}
+.home{ margin: 0 20rpx;}
+.header{ height: 200rpx; padding: 35rpx 10rpx; position: relative; border-bottom: 1px solid #cdcdcd;}
 .header .avatar{ width: 200rpx; height: 200rpx; border-radius: 10px;float: left;}
-.header .main{ float: left; height: 100%; padding: 20rpx 15rpx;}
-.header .main .name{}
+
+.header .main{ float: left; height: 200rpx; padding: 20rpx 15rpx; width: 55%; box-sizing: border-box;}
+.header .main .name{ font-size: 18px;}
+.header .main .name text{ display: inline-block; max-width: 85%; padding-left: 5rpx; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
+.header .main .name .iconnan { color: skyblue;}
+.header .main .name .iconnv { color: hotpink;}
+
 .header .main .area{ font-size: 12px; color: grey;}
-.header .likes{ float: right; position: relative; top: 50%; transform: translateY(-50%);}
+
+.header .likes{ float: right; padding-right: 15rpx; position: relative; top: 50%; transform: translateY(-50%);}
 .header .likes text{ display: block; text-align: center;}
 .header .likes .iconfont{ color: tomato; font-size: 28px;}
 .header .likes .likes-number{ font: 10px lightslategray;}
 
-.other{ margin: 80rpx 20rpx;}
-.other text { display: block; height: 80rpx; border-bottom: 1px dashed #cdcdcd; line-height: 100rpx;}
+.other{ margin: 20rpx 15rpx;}
+.other view{ height: 80rpx; border-bottom: 1px dashed #cdcdcd; line-height: 100rpx;}
+.other .signature{ width: 100%; overflow-x: hidden;}
+
+.other .iconfont{ margin-left: 15rpx; font-size: 55rpx; color: #ffde55;}
+.other .iconfuzhi{ font-size: 35rpx;}
+
+button { margin: 50rpx 30rpx 0;}
+.addfriend{ }
+.tochat{ }

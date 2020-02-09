@@ -10,7 +10,7 @@ Page({
    */
   data: {
     info: {},
-    isFriend: false,
+    isFriend: true,
     isMan: true
   },
 
@@ -106,6 +106,18 @@ Page({
           info: newInfo
         })
       }
+    })
+  },
+  call (ev) {
+    let phoneNumber = ev.target.dataset.phone
+    wx.makePhoneCall({
+      phoneNumber: phoneNumber
+    })
+  },
+  copy (ev) {
+    let wxId = ev.target.dataset.wx
+    wx.setClipboardData({
+      data: wxId
     })
   }
 })

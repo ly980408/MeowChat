@@ -2,8 +2,8 @@
 
 <wxs src="../../wxs/numberFormat.wxs" module="m1"></wxs>
 
-<view class="home">
-  <view>
+<view>
+  <view class="home">
     <view class="header">
       <image src="{{ info.userAvatar }}" class="avatar"></image>
       <view class="main">
@@ -12,21 +12,27 @@
           <text wx:if="{{ info.gender != 0 }}" class="{{ isMan ? 'iconfont iconnan':'iconfont iconnv' }}"></text>
         </view>
         <view>
-          <text class="area">地区：{{ info.city }},{{ info.province }}</text>
+          <text wx:if="{{ info.province }}" class="area">地区：{{ info.city+','+info.province }}</text>
         </view>
       </view>
-      <!-- 待添加 点击事件 喜欢 -->
       <text class="likes" data-id="{{ info._id }}" bindtap="handleLikes">
         <text class="iconfont iconxihuan1"></text>
         <text class="likes-number">{{ m1.numberFormat(info.likes) }}</text>
       </text>
     </view>
     <view class="other">
-      <text class="signature">个性签名：{{ info.signature }}</text>
-      <text class="phone">手机号：{{ info.phoneNumber }}</text>
-      <text class="wx">微信号：{{ info.wxId }}</text>
+      <view class="signature">个性签名：{{ info.signature || '这个人很懒，什么也没留下~' }}</view>
+      <view wx:if="{{ isFriend }}" class="phone">
+        <text>手机号：{{ info.phoneNumber || '(未设置)' }}</text>
+        <text wx:if="{{ info.phoneNumber }}" class="iconfont icondianhua" data-phone="{{ info.phoneNumber }}" bindtap="call"></text>
+      </view>
+      <view wx:if="{{ isFriend }}" class="wx">
+        <text>微信号：{{ info.wxId || '(未设置)' }}</text>
+        <text wx:if="{{ info.wxId }}" class="iconfont iconfuzhi" data-wx="{{ info.wxId }}" bindtap="copy"></text>
+      </view>
      </view>
   </view>
 
   <button wx:if="{{ !isFriend }}" class="addfriend">添加好友</button>
+  <button wx:else class="tochat">发起聊天</button>
 </view>
