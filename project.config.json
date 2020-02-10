@@ -8,7 +8,15 @@
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
-		"autoAudits": false
+		"autoAudits": false,
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		}
 	},
 	"appid": "wx4647d862a37b1e96",
 	"projectname": "Meow%20Chat",
@@ -69,7 +77,14 @@
 					"id": 4,
 					"name": "pages/home/home",
 					"pathName": "pages/home/home",
-					"query": "userId=d68532785e3d52ec0bd44bfe1944999a",
+					"query": "userId=74b140b45e3d4cca0bcf05b9027b6ae0",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/message/message",
+					"pathName": "pages/message/message",
+					"query": "userId=74b140b45e3d4cca0bcf05b9027b6ae0",
 					"scene": null
 				}
 			]

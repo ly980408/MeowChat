@@ -1,6 +1,6 @@
 /* miniprogram/pages/user/user.wxss */
-.user-info{ height: 150rpx; border-bottom: 10px solid #cdcdcd; display: flex; align-items: center;}
-.user-info image{ width: 100rpx; height: 100rpx; margin: 0 20rpx;}
+.user-info{ height: 200rpx; background: #fff; border-bottom: 85rpx solid #f6f6f6; display: flex; align-items: center;}
+.user-info image{ width: 160rpx; height: 160rpx; margin: 20rpx; border-radius: 10rpx;}
 .user-info button{ margin: 0;}
 .user-info-text { height: 100rpx; width: 60%;}
 .user-info-text text { display: block; height: 50%; width: 100%; box-sizing: border-box; overflow-x: hidden; text-overflow: ellipsis; white-space: nowrap;}
@@ -10,7 +10,8 @@
 /* .user-info-list{} */
 .user-info-list-item{ 
   height: 50rpx;
-  border-bottom: 1px #cdcdcd dashed;
+  border-bottom: 1px #cdcdcd solid;
+  background: #ffffff;
   padding: 10px;
   display: flex;
   align-items: center;

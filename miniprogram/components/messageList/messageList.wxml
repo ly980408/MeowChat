@@ -1,0 +1,12 @@
+<!--components/messageList.wxml-->
+<movable-area class="area">
+  <movable-view direction="horizontal" class="view">
+    <view class="avatar">
+      <image src="{{ userInfo.userAvatar }}" data-id="{{ userInfo._id }}" bindtap="toHome"></image>
+    </view>
+    <view class="content">
+      <text>{{ userInfo.nickName }}请求加为好友</text>
+    </view>
+    <view class="delete" bindtap="deleteMessage"><text>删 除</text></view>
+  </movable-view>
+</movable-area>

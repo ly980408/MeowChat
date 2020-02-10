@@ -21,7 +21,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    wx.setNavigationBarTitle({
+      title: '我的'
+    })
   },
 
   /**
@@ -120,9 +122,35 @@ Page({
             isLogged: true
           })
           app.isLogged = true
-          app.toRefresh = true
+          this.watchMessage()
         })
       })
     }
+  },
+  watchMessage() {
+    db.collection('message').where({
+      userId: app.userInfo._id
+    }).watch({
+      onChange: function(snapshot) {
+        if (snapshot.docChanges.length) {
+          let list = snapshot.docChanges[0].doc.list
+          if (list.length) {  // 有消息
+            wx.showTabBarRedDot({
+              index: 2
+            })
+            app.userMessage = list
+            console.log('message list:',app.userMessage)
+          } else {
+            wx.hideTabBarRedDot({
+              index: 2
+            })
+            app.userMessage = []
+          }
+        }
+      },
+      onError: function(err) {
+        console.error('the watch closed because of error', err)
+      }
+    })
   }
 })

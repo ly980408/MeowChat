@@ -6,7 +6,7 @@
           indicator-dots="{{true}}"
           indicator-color="rgba(255,255,255,.3)"
           indicator-active-color="#ffde55"
-          autoplay="{{false}}"
+          autoplay="{{true}}"
           circular="{{true}}">
     <block wx:for="{{imgUrls}}" wx:key="index">
       <swiper-item>

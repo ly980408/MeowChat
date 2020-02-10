@@ -10,8 +10,9 @@ Page({
    */
   data: {
     info: {},
-    isFriend: true,
-    isMan: true
+    isFriend: false,
+    isMan: true,
+    isSelf: false
   },
 
   /**
@@ -25,6 +26,11 @@ Page({
         this.setData({
           info: res.data
         })
+        if ( userId == app.userInfo._id ){
+          this.setData({
+            isSelf: true
+          })
+        }
         if (res.data.gender == 1) {
           this.setData({ isMan: true})
         } else {
@@ -95,7 +101,8 @@ Page({
           likes: _.inc(1)
         }`
       }
-    }).then(res => {
+    })
+    .then(res => {
       let updated = res.result.stats.updated
       if (updated) {
         let oldInfo = this.data.info
@@ -119,5 +126,82 @@ Page({
     wx.setClipboardData({
       data: wxId
     })
+  },
+  toEdit(){
+    wx.navigateTo({
+      url: '../editUserInfo/editUserInfo'
+    })
+  },
+
+  // 添加好友事件
+  addFriend(){
+    // console.log(app.isLogged)
+    if (app.isLogged) {
+      // 发送好友请求
+      db.collection('message').where({
+          userId: this.data.info._id
+        }).get().then(res => {
+          if (res.data.length) {  // 有数据 更新
+            if ( res.data[0].list.includes(app.userInfo._id) ) {
+              wx.showToast({
+                title: '已经发过请求啦！',
+                duration: 1500,
+                icon: 'none'
+              })
+            } else {
+              let id = res.data[0]._id
+              // db.collection('message').doc(id)
+              // .update({
+              //   data: {
+              //     list: db.command.unshift(app.userInfo._id)
+              //   }
+              // })
+              wx.cloud.callFunction({
+                name: 'update',
+                data: {
+                  collection: 'message',
+                  doc: id,
+                  data: `{
+                    list: _.unshift('${app.userInfo._id}')
+                  }`
+                }
+              })
+              .then(res => {
+                wx.showToast({
+                  title: '请求发送成功!',
+                  duration: 1500
+                })
+              })
+            }
+
+          } else {  // 无数据 添加
+            db.collection('message').add({
+              data: {
+                userId: this.data.info._id,
+                list: [app.userInfo._id]
+              }
+            }).then(res => {
+              wx.showToast({
+                title: '请求发送成功！',
+                duration: 1500
+              })
+            })
+          }
+        })
+
+    } else {
+      wx.showToast({
+        title: '请先登录！',
+        duration: 2000,
+        icon: 'none',
+        success: () => {
+          setTimeout(() => {
+            wx.switchTab({
+              url: '../user/user'
+            })
+          }, 2000)
+        }
+      })
+    }
   }
 })

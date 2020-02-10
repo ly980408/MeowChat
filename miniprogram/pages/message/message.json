@@ -1,3 +1,7 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "message-list": "/components/messageList/messageList"
+  },
+  "enablePullDownRefresh": false,
+  "onReachBottomDistance": 50
 }

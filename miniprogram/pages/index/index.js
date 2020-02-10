@@ -22,24 +22,48 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    const timer = setInterval(() => {
+      if (app.isLogged) {
+        this.watchMessage()
+        clearInterval(timer)
+      }
+    }, 50);
+    this.refreshData()
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    this.refreshData()
+    // wx.cloud.callFunction({
+    //   name: 'login',
+    //   data: {}
+    // }).then(res => {
+    //   // 实现自动登录功能
+    //   let db = wx.cloud.database()
+    //   db.collection('users').where({
+    //     _openid: res.result.openid
+    //   }).get().then((res) => {
+    //     if (res.data.length) {
+    //       app.userInfo = Object.assign(app.userInfo, res.data[0]);
+    //       app.isLogged = true
+    //       wx.showToast({
+    //         title: `${app.userInfo.nickName} 欢迎回来~`,
+    //         icon: 'none'
+    //       })
+    //       this.watchMessage()
+    //     } else {
+    //       app.isLogged = false
+    //     }
+    //   })
+    // })
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    if (app.isLogged && app.toUpdate) {
-      this.refreshData()
-      app.toUpdate = false
-    }
+    this.refreshData()
   },
 
   /**
@@ -83,39 +107,6 @@ Page({
   onShareAppMessage: function () {
 
   },
-  // handleLikes (ev) {
-  //   // 此方法暂未实现第二次点击取消功能，而是可以无限喜欢
-  //   // 待更新。。。
-
-  //   let id = ev.target.dataset.id
-
-  //   // 调用云函数 update 
-  //   wx.cloud.callFunction({
-  //     name: 'update',
-  //     data: {
-  //       collection: 'users',
-  //       doc: id,
-  //       data: `{
-  //         likes: _.inc(1)
-  //       }`
-  //     }
-  //   }).then(res => {
-  //     let updated = res.result.stats.updated
-  //     if (updated) {
-  //       let newDataList = [...this.data.dataList]
-  //       for (let user of newDataList) {
-  //         if (user._id == id) {
-  //           user.likes++
-  //           break
-  //         }
-  //       }
-  //       this.setData({
-  //         dataList: newDataList
-  //       })
-  //     }
-      
-  //   })
-  //},
   refreshData(){
     db.collection('users')
     .field({
@@ -146,6 +137,32 @@ Page({
     let id = ev.target.dataset.id
     wx.navigateTo({
       url: `../home/home?userId=${id}`
+    })
+  },
+  watchMessage() {
+    db.collection('message').where({
+      userId: app.userInfo._id
+    }).watch({
+      onChange: function(snapshot) {
+        if (snapshot.docChanges.length) {
+          let list = snapshot.docChanges[0].doc.list
+          if (list.length) {  // 有消息
+            wx.showTabBarRedDot({
+              index: 2
+            })
+            app.userMessage = list
+            console.log('message list:',app.userMessage)
+          } else {
+            wx.hideTabBarRedDot({
+              index: 2
+            })
+            app.userMessage = []
+          }
+        }
+      },
+      onError: function(err) {
+        console.error('the watch closed because of error', err)
+      }
     })
   }
 })

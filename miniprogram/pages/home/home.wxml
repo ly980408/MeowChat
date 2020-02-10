@@ -33,6 +33,10 @@
      </view>
   </view>
 
-  <button wx:if="{{ !isFriend }}" class="addfriend">添加好友</button>
-  <button wx:else class="tochat">发起聊天</button>
+  <view wx:if="{{ !isSelf }}">
+    <button wx:if="{{ !isFriend }}" class="addfriend" bindtap="addFriend">添加好友</button>
+    <button wx:else class="tochat">发起聊天</button>
+  </view>
+  <button wx:else class="toedit" bindtap="toEdit">编辑个人信息</button>
+
 </view>

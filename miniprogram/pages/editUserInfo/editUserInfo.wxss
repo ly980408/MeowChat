@@ -2,7 +2,8 @@
 .editUserInfo{ margin-top: 20rpx;}
 .editUserInfo-item{ 
   height: 50rpx;
-  border-bottom: 1px #cdcdcd dashed;
+  border-bottom: 1px #cdcdcd solid;
+  background: #fff;
   padding: 10px;
   display: flex;
   align-items: center;

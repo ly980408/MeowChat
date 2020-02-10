@@ -1,1 +1,3 @@
 /* miniprogram/pages/message/message.wxss */
+.no-message{ font-size: 16px; color: #cdcdcd; position: absolute; top: 50%; left: 50%; transform: translate(-50%);}
+.message-list .message-item{ height: 50rpx;}
