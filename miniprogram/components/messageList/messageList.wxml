@@ -1,5 +1,5 @@
 <!--components/messageList.wxml-->
-<movable-area class="area">
+<movable-area class="area" style="{{ isDeleted ? 'display: none':'' }}">
   <movable-view direction="horizontal" class="view">
     <view class="avatar">
       <image src="{{ userInfo.userAvatar }}" data-id="{{ userInfo._id }}" bindtap="toHome"></image>
@@ -7,6 +7,7 @@
     <view class="content">
       <text>{{ userInfo.nickName }}请求加为好友</text>
     </view>
-    <view class="delete" bindtap="deleteMessage"><text>删 除</text></view>
+    <view class="confirm" bindtap="confirmMessage"><text>同意</text></view>
+    <view class="delete" bindtap="deleteMessage"><text>删除</text></view>
   </movable-view>
 </movable-area>

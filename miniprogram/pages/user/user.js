@@ -109,7 +109,8 @@ Page({
           wxId:'',
           likes: 0,
           time: new Date(),
-          isLocation: true
+          isLocation: true,
+          friendList: []
         }
       }).then((res) => {
         // 读取信息并更新到全局属性中
@@ -139,7 +140,8 @@ Page({
               index: 2
             })
             app.userMessage = list
-            console.log('message list:',app.userMessage)
+            // console.log('message list:',app.userMessage)
+            app.toRefresh = true
           } else {
             wx.hideTabBarRedDot({
               index: 2

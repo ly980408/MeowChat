@@ -26,6 +26,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
+    
   },
 
   /**
@@ -71,7 +72,13 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    this.onShow()
+    wx.showToast({
+      title: '刷新成功',
+      success: () => {
+        wx.stopPullDownRefresh()
+      }
+    })
   },
 
   /**

@@ -1,25 +1,41 @@
 // miniprogram/pages/friendList/friendList.js
+
+const app = getApp()
+const db = wx.cloud.database()
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    friendList: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    wx.setNavigationBarTitle({
+      title: '好友列表'
+    })
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    db.collection('users').where({
+      friendList: app.userInfo._id
+    }).field({
+      userAvatar: true,
+      nickName: true,
+      signature: true
+    }).get().then(res => {
+      this.setData({
+        friendList: res.data
+      })
+    })
   },
 
   /**

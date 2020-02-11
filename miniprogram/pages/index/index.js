@@ -151,7 +151,8 @@ Page({
               index: 2
             })
             app.userMessage = list
-            console.log('message list:',app.userMessage)
+            // console.log('message list:',app.userMessage)
+            app.toRefresh = true
           } else {
             wx.hideTabBarRedDot({
               index: 2

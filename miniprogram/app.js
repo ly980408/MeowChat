@@ -34,5 +34,7 @@ App({
   },
   isLogged: false,
   userInfo: {},
-  userMessage: []
+  userMessage: [],
+  toRefresh: false,
+  isDeleted: false
 })

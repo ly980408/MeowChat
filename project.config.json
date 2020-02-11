@@ -77,7 +77,7 @@
 					"id": 4,
 					"name": "pages/home/home",
 					"pathName": "pages/home/home",
-					"query": "userId=74b140b45e3d4cca0bcf05b9027b6ae0",
+					"query": "userId=17d3d92e-0346-45f9-8c0c-9e9d45c852e8",
 					"scene": null
 				},
 				{
@@ -85,6 +85,13 @@
 					"name": "pages/message/message",
 					"pathName": "pages/message/message",
 					"query": "userId=74b140b45e3d4cca0bcf05b9027b6ae0",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/friendList/friendList",
+					"pathName": "pages/friendList/friendList",
+					"query": "",
 					"scene": null
 				}
 			]

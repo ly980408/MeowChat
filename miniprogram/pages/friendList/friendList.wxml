@@ -1,2 +1,15 @@
 <!--miniprogram/pages/friendList/friendList.wxml-->
-<text>miniprogram/pages/friendList/friendList.wxml</text>
+<view class="friend-list">
+  <navigator wx:for="{{ friendList }}" wx:key="index" url="{{ '../home/home?userId=' + item._id }}" open-type="navigate">
+    <view class="list-item">
+      <view class="avatar">
+        <image src="{{ item.userAvatar }}"></image>
+      </view>
+      <view class="info">
+        <text class="name">{{ item.nickName }}</text>
+        <text class="signature">{{ item.signature || '这个人很懒，什么也没留下~' }}</text>
+      </view>
+      
+    </view>
+  </navigator>
+</view>

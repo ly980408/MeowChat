@@ -36,6 +36,12 @@ Page({
         } else {
           this.setData({ isMan: false})
         }
+        let friendList = res.data.friendList
+        if (friendList.includes(app.userInfo._id)) {
+          this.setData({
+            isFriend: true
+          })
+        }
       })
   },
 

@@ -21,15 +21,29 @@
       </text>
     </view>
     <view class="other">
-      <view class="signature">个性签名：{{ info.signature || '这个人很懒，什么也没留下~' }}</view>
-      <view wx:if="{{ isFriend }}" class="phone">
-        <text>手机号：{{ info.phoneNumber || '(未设置)' }}</text>
-        <text wx:if="{{ info.phoneNumber }}" class="iconfont icondianhua" data-phone="{{ info.phoneNumber }}" bindtap="call"></text>
+      <view class="signature">
+      <text class="item">个性签名</text>
+      <text>{{ info.signature || '这个人很懒，什么也没留下~' }}</text>
       </view>
-      <view wx:if="{{ isFriend }}" class="wx">
-        <text>微信号：{{ info.wxId || '(未设置)' }}</text>
-        <text wx:if="{{ info.wxId }}" class="iconfont iconfuzhi" data-wx="{{ info.wxId }}" bindtap="copy"></text>
+      
+      <view class="phone">
+        <text class="item">手机号</text>
+        <block wx:if="{{ isFriend || isSelf }}">
+          <text>{{ info.phoneNumber || '(未设置)' }}</text>
+          <text wx:if="{{ info.phoneNumber && !isSelf }}" class="iconfont icondianhua" data-phone="{{ info.phoneNumber }}" bindtap="call"></text>
+        </block>
+        <text wx:else class="tip">仅好友可见</text>
       </view>
+      
+      <view class="wx">
+        <text class="item">微信号</text>
+        <block wx:if="{{ isFriend || isSelf }}">
+          <text>{{ info.wxId || '(未设置)' }}</text>
+          <text wx:if="{{ info.wxId && !isSelf }}" class="iconfont iconfuzhi" data-wx="{{ info.wxId }}" bindtap="copy"></text>
+        </block>
+        <text wx:else class="tip">仅好友可见</text>
+      </view>
+
      </view>
   </view>
 
