@@ -22,41 +22,36 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    const timer = setInterval(() => {
-      if (app.isLogged) {
-        this.watchMessage()
-        clearInterval(timer)
-      }
-    }, 50);
-    this.refreshData()
+
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    // wx.cloud.callFunction({
-    //   name: 'login',
-    //   data: {}
-    // }).then(res => {
-    //   // 实现自动登录功能
-    //   let db = wx.cloud.database()
-    //   db.collection('users').where({
-    //     _openid: res.result.openid
-    //   }).get().then((res) => {
-    //     if (res.data.length) {
-    //       app.userInfo = Object.assign(app.userInfo, res.data[0]);
-    //       app.isLogged = true
-    //       wx.showToast({
-    //         title: `${app.userInfo.nickName} 欢迎回来~`,
-    //         icon: 'none'
-    //       })
-    //       this.watchMessage()
-    //     } else {
-    //       app.isLogged = false
-    //     }
-    //   })
-    // })
+    wx.cloud.callFunction({
+      name: 'login',
+      data: {}
+    }).then(res => {
+      // 实现自动登录功能
+      let db = wx.cloud.database()
+      db.collection('users').where({
+        _openid: res.result.openid
+      }).get().then((res) => {
+        if (res.data.length) {
+          app.userInfo = Object.assign(app.userInfo, res.data[0]);
+          app.isLogged = true
+          wx.showToast({
+            title: `${app.userInfo.nickName} 欢迎回来~`,
+            icon: 'none'
+          })
+          this.refreshData()
+          this.watchMessage()
+        } else {
+          app.isLogged = false
+        }
+      })
+    })
   },
 
   /**

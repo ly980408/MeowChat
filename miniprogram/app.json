@@ -51,5 +51,10 @@
       }
     ]
   },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于“附近”功能"
+    }
+  },
   "sitemapLocation": "sitemap.json"
 }

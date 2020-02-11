@@ -93,6 +93,12 @@
 					"pathName": "pages/friendList/friendList",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/near/near",
+					"pathName": "pages/near/near",
+					"scene": null
 				}
 			]
 		}
