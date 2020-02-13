@@ -111,6 +111,11 @@ Component({
           }
         }
       })
+    },
+    handleHistoryItem(ev){
+      const value = ev.target.dataset.text
+      // console.log(value)
+      this.getData(value)
     }
   }
 })

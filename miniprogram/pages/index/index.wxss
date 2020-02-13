@@ -12,6 +12,9 @@
 .index-tab{
   display: flex;
   margin: 20rpx 0;
+  position: sticky;
+  top: 90rpx;
+  left: 0;
 }
 .index-tab view{
   flex: 1;

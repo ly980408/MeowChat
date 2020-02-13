@@ -12,13 +12,14 @@
     <view class="search-cancel" style="{{ isFocus?'':'display:none' }}" bindtap="cancelSearch">取消</view>
   </view>
   <view wx:if="{{ isFocus }}" class="searching">
-    <view wx:if="{{ searchList.length == 0 }}" class="search-history">
+    <view class="search-history">
       <view class="search-history-header">
         <text>历史记录</text>
         <text wx:if="{{ historyList.length }}" class="clear" bindtap="clearHistory"><text class="iconfont iconqingkong"></text>清空</text>
       </view>
       <view class="search-history-content">
-        <text wx:for="{{ historyList }}" wx:key="index" class="search-history-item">{{ item }}</text>
+        <text wx:for="{{ historyList }}" wx:key="index" bindtap="handleHistoryItem" data-text="{{ item }}" class="search-history-item">{{ item }}</text>
+        <text wx:if="{{ historyList.length == 0 }}" class="no-history"> 暂无历史</text>
       </view>
     </view>
     <view class="search-list">
