@@ -1,0 +1,38 @@
+<!--components/search/search.wxml-->
+<view class="{{ isFocus?'search-container':'container' }}">
+
+  <view class="search-box">
+    <view class="search-text" bindtap="toSearch">
+      <view class="{{ isFocus?'left':'' }}">
+        <text class="iconfont iconsousuo"></text>
+        <input wx:if="{{ isFocus }}" type="text" focus="true" placeholder="搜索喵星人~" bindconfirm="search" confirm-type="search" />
+        <text wx:else>搜索喵星人~</text>
+      </view>
+    </view>
+    <view class="search-cancel" style="{{ isFocus?'':'display:none' }}" bindtap="cancelSearch">取消</view>
+  </view>
+  <view wx:if="{{ isFocus }}" class="searching">
+    <view wx:if="{{ searchList.length == 0 }}" class="search-history">
+      <view class="search-history-header">
+        <text>历史记录</text>
+        <text wx:if="{{ historyList.length }}" class="clear" bindtap="clearHistory"><text class="iconfont iconqingkong"></text>清空</text>
+      </view>
+      <view class="search-history-content">
+        <text wx:for="{{ historyList }}" wx:key="index" class="search-history-item">{{ item }}</text>
+      </view>
+    </view>
+    <view class="search-list">
+      <view wx:for="{{ searchList }}" wx:key="{{ index }}">
+        <view class="list-item" data-id="{{ item._id }}" bindtap="toHome">
+          <view class="avatar">
+            <image src="{{ item.userAvatar }}"></image>
+          </view>
+          <view class="item-text">
+            <text class="name">{{ item.nickName }}</text>
+            <text class="iconfont icondel" data-index="{{ index }}" catchtap="delete"></text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

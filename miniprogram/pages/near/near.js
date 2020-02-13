@@ -2,6 +2,7 @@
 
 const db = wx.cloud.database()
 const app = getApp()
+const _ = db.command
 
 Page({
 
@@ -10,7 +11,8 @@ Page({
    */
   data: {
     longitude: undefined,
-    latitude: undefined
+    latitude: undefined,
+    markers: []
   },
   getLocation () {
     wx.getLocation({
@@ -27,14 +29,49 @@ Page({
      })
   },
   getNearUsers () {
-
+    db.collection('users').where({
+      location: _.geoNear({
+        geometry: db.Geo.Point(this.data.longitude, this.data.latitude),
+        minDistance: 0,
+        maxDistance: 5000
+      }),
+      isLocation: true
+    }).field({
+      longitude: true,
+      latitude: true,
+      userAvatar: true
+    }).get().then(res => {
+      // console.log(res.data)
+      let data = res.data
+      let result = []
+      if (data.length) {
+        for (let i = 0; i < data.length; i++) {
+          result.push({
+              iconPath: data[i].userAvatar,
+              id: data[i]._id,
+              latitude: data[i].latitude,
+              longitude: data[i].longitude,
+              width: 30,
+              height: 30
+          })
+        }
+        this.setData({
+          markers: result
+        })
+      }
+    })
   },
-
+  markertap (ev) {
+    const id = ev.markerId
+    wx.navigateTo({
+      url: `/pages/home/home?userId=${id}`
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getLocation()
+    // this.getLocation()
     if (!app.userInfo._id) {
       wx.showToast({
         title: '请先登录！',

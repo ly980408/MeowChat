@@ -1,7 +1,7 @@
 /* miniprogram/pages/index/index.wxss */
 .index-swiper{
   height: 400rpx;
-  margin: 20rpx;
+  margin: 110rpx 20rpx 20rpx 20rpx;
   border-radius: 10rpx;
   overflow: hidden;
 }
@@ -11,13 +11,14 @@
 }
 .index-tab{
   display: flex;
-  margin: 20rpx;
+  margin: 20rpx 0;
 }
 .index-tab view{
   flex: 1;
   text-align: center;
   padding: 20rpx 0;
-  margin: 20rpx auto;
+  margin: 0 0 20rpx;
+  background: #fff;
 }
 .index-tab view.active{
   border-bottom: 2px solid #ffde55;

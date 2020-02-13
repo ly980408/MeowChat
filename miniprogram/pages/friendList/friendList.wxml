@@ -1,15 +1,19 @@
 <!--miniprogram/pages/friendList/friendList.wxml-->
 <view class="friend-list">
-  <navigator wx:for="{{ friendList }}" wx:key="index" url="{{ '../home/home?userId=' + item._id }}" open-type="navigate">
-    <view class="list-item">
-      <view class="avatar">
-        <image src="{{ item.userAvatar }}"></image>
+  <block wx:if="{{ friendList.length }}">
+    <navigator wx:for="{{ friendList }}" wx:key="index" url="{{ '../home/home?userId=' + item._id }}" open-type="navigate">
+      <view class="list-item">
+        <view class="avatar">
+          <image src="{{ item.userAvatar }}"></image>
+        </view>
+        <view class="info">
+          <text class="name">{{ item.nickName }}</text>
+          <text class="signature">{{ item.signature || '这个人很懒，什么也没留下~' }}</text>
+        </view>
       </view>
-      <view class="info">
-        <text class="name">{{ item.nickName }}</text>
-        <text class="signature">{{ item.signature || '这个人很懒，什么也没留下~' }}</text>
-      </view>
-      
-    </view>
-  </navigator>
+    </navigator>
+  </block>
+  <view wx:else class="no-friend">
+    <text>您还没有好友，快去添加吧~</text>
+  </view>
 </view>

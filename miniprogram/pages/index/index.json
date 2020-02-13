@@ -1,5 +1,7 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "search": "/components/search/search"
+  },
   "enablePullDownRefresh": true,
   "onReachBottomDistance": 50
 }

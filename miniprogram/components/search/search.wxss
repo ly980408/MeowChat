@@ -1,0 +1,31 @@
+/* components/search/search.wxss */
+.container{ background-color: #fff; padding: 0 20rpx; position: fixed; left: 0; top: 0; height: 90rpx; width: 100%; z-index: 9; box-sizing: border-box;}
+.search-container{  background-color: #fff; padding: 0 20rpx; position: fixed; left: 0; top: 0; height: 100%; width: 100%; z-index: 9; box-sizing: border-box;}
+
+.search-box{ height: 90rpx; display: flex; align-items: center;}
+.search-box .search-text { padding-right: 20rpx; width: 100%; background-color: #f6f6f6; border: 1px solid #cdcdcd; border-radius: 20rpx;}
+.search-box .search-text view{ width: fit-content; margin: 0 auto; display: flex;align-items: center;flex: 1; color: #cdcdcd;}
+.search-box .search-text view.left{ width: 100%; margin: 0; color: black;}
+.search-box .search-text view.left input{ flex: 1;}
+.search-box .search-text .iconsousuo { margin: 0 10rpx; font-size: 22px;}
+
+.search-box .search-cancel{ color: cornflowerblue; margin-left:10rpx; width: fit-content; white-space: nowrap;}
+
+.searching{ position: absolute; top: 90rpx; left: 0; background-color: #f6f6f6; width: 100%; height: calc(100% - 90rpx);}
+.searching .search-history{ margin: 20rpx;}
+.searching .search-history-header{ margin-bottom: 35rpx; display: flex; justify-content: space-between;}
+.searching .search-history-header .clear{ font-size: 12px; color: #cdcdcd;}
+
+.searching .search-history-content{ max-height: 100rpx; overflow: hidden; white-space: nowrap;}
+.searching .search-history-item{ display: inline-block; background-color: lightgray; margin: 20rpx 20rpx 0 0; width: fit-content; border-radius: 20rpx; padding: 10rpx 20rpx; border: 1px solid #cdcdcd;}
+
+.search-list{ margin-top: 40rpx; padding:0 20rpx; background: #fff;}
+.list-item{ width: 100%; height: 150rpx; display: flex; border-bottom: 1px solid #cdcdcd;}
+.list-item .avatar{ width: 150rpx; height: 150rpx; padding: 20rpx; box-sizing: border-box;}
+.list-item .avatar image{ width: 100%; height: 100%; border-radius: 50%;}
+
+.list-item .item-text{ width: calc(100% - 150rpx); display: flex; align-items: center; justify-content: space-between;}
+.list-item .item-text .name{ padding-left: 10rpx; font-size: 18px; }
+.list-item .item-text .icondel{ font-size: 26px; color: #c0c0c0; z-index: 99;}
+
+.hide{ display: none;}

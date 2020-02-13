@@ -2,6 +2,7 @@
 <wxs src="../../wxs/numberFormat.wxs" module="m1"></wxs>
 
 <view class='index'>
+  <search/>
   <swiper class="index-swiper"
           indicator-dots="{{true}}"
           indicator-color="rgba(255,255,255,.3)"
