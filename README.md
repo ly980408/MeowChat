@@ -2,7 +2,7 @@
 
 ## 项目
 
-交友小程序  --  Meow Chat
+Meow Chat
 
 ### 项目结构
 
